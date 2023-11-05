@@ -22,10 +22,12 @@ async function initsummary() {
     await loadUserData();
     checkUserLogin();
     loadFromLocalStorage();
+    loadFromLocalStorageContacts()
     GreetingAfterTime();
     OneStartexecuteOnScreenWidthChange();
     loadSummaryTask();
     clacDateUrgent();
+    createHeaderName();
 }
 
 /** 

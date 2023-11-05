@@ -46,7 +46,7 @@ function showForgotPassword(mode) {
     } else if (mode === 'reset') {
         document.getElementById('password-container').classList.remove('d-none');
         document.getElementById('forgot-password-container').classList.add('d-none');
-        
+
     }
 }
 
@@ -59,9 +59,9 @@ function handleForgotPasswordFormSubmit() {
 
     document.getElementById('forgot-password-container').classList.add('d-none');
     document.getElementById('password-container').classList.remove('d-none');
-    
+
     showPopupAndRedirect('Passwort erfolgreich zurückgesetzt', 'index.html');
-    
+
     return false;
 }
 
@@ -82,13 +82,12 @@ function validatePasswords() {
     const password2 = document.getElementById('ForgotPassword2').value;
     const errorMessage = document.getElementById('register-error2');
     if (password1 !== password2) {
-        
+
         showPopup('Your password does not match.')
-        return false; // Verhindert das Absenden des Formulars
+        return false;
     } else {
         errorMessage.style.display = 'none';
-         // Hier wird das Passwort zurückgesetzt
-        return true; // Lässt das Formular absenden
+        return true;
     }
 }
 
@@ -124,7 +123,7 @@ function handleForgotPasswordFormSubmit() {
 function checkUserLogin() {
     if (user == undefined) {
         console.log('fehler')
-        openPage('index.html');
+        openPage('../index.html');
     }
 }
 
@@ -154,7 +153,6 @@ function setGuestUser() {
  * @param {string} [url] - Optional. The URL to redirect to after the popup disappears.
  */
 function showPopupAndRedirect(text, url) {
-    // Zeige das Popup
     var popup = document.createElement("div");
     popup.textContent = text;
     popup.classList.add("popup");
@@ -166,7 +164,7 @@ function showPopupAndRedirect(text, url) {
         popup.style.top = "-100px";
         setTimeout(function () {
             document.body.removeChild(popup);
-            // Nachdem das Popup verschwunden ist, leite zur angegebenen URL weiter
+
             if (url) {
                 window.location.href = url;
             }
@@ -206,5 +204,19 @@ function userNavbar() {
         navbar.classList.remove('d-none');
     } else {
         navbar.classList.add('d-none');
+    }
+}
+
+
+function createHeaderName() {
+    for (let i = 0; i < contacts.length; i++) {
+        const element = contacts[i];
+        if (element.email == user) {
+            document.getElementById('header-icon').innerHTML = element.logogram;
+            document.getElementById('header-icon').style.backgroundColor = element.hex_color;
+        } else if (user == 'guest') {
+            document.getElementById('header-icon').innerHTML = 'GU';
+            document.getElementById('header-icon').style.backgroundColor = '#FFA64E';
+        }
     }
 }

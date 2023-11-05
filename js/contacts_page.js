@@ -19,6 +19,7 @@ async function initContacts() {
     loadFromLocalStorage();
     loadFromLocalStorageContacts();
     renderContacts();
+    createHeaderName();
 }
 
 /**
