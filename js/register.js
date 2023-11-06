@@ -5,8 +5,8 @@ let users = [];
  * @returns {Promise<void>}
  */
 async function init() {
-    loadUsersFromLocalStorage();
-    loadUsers(); 
+    //loadUsersFromLocalStorage();
+    //loadUsers(); 
 }
 
 /**
@@ -41,7 +41,6 @@ async function loadUsers() {
             console.error('Parsed users is not an array:', parsedUsers);
             users = [];
         }
-        saveUsersToLocalStorage(); // Speichern Sie die `users` im LocalStorage.
     } catch (e) {
         console.error('Loading error:', e);
     }

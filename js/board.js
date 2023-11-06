@@ -2,7 +2,7 @@
  * This function initializes the board page
  */
 async function initBoard() {
-    loadUserData();
+    await loadUserData();
     checkUserLogin();
     loadTaskBoard();
     createHeaderName();
@@ -122,7 +122,8 @@ function allowDrop(event) {
 function moveTo(category) {
     list[draggedElement]['task_board'] = category;
     SaveInLocalStorageAndServer(user, 'list', list);
-    initBoard();
+    //initBoard();
+    loadTaskBoard();
 }
 
 /**
@@ -219,9 +220,9 @@ function deleteTask(id) {
 }
 
 function addGuestTask() {
-        if (user == 'guest') {
-            showPopup('Cannot be deleted as a guest. Please create an account')
-        }
+    if (user == 'guest') {
+        showPopup('Cannot be deleted as a guest. Please create an account')
+    }
 }
 
 /**

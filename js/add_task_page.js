@@ -19,7 +19,8 @@ async function initAddTask() {
 function loadAddTaskForm() {
     let AddTaskForm = document.getElementById('task-input-con');
     AddTaskForm.innerHTML = "";
-    AddTaskForm.innerHTML = createAddTask();
+    let todayDate = getCurrentDate();
+    AddTaskForm.innerHTML = createAddTask(todayDate);
 }
 
 //  Assigned To Field - render Contacts list 
@@ -179,3 +180,16 @@ function saveEditedSubtask(i) {
 
     renderInputText();
 }
+
+/**
+ * This function determines today's date and returns it formatted
+ * 
+ * @returns todayDate
+ */
+function getCurrentDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }

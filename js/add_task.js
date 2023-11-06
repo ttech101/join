@@ -10,9 +10,8 @@ let taskBoardField = "";
  */
 
 async function createNewTask() {
-    if(user === 'guest') {
+    if (user === 'guest') {
         showPopup('Cannot be saved as a guest. Please create an account');
-        closeNewContacts();
     } else {
         await defineNewTask();
     }
@@ -30,7 +29,7 @@ async function defineNewTask() {
     let taskCategory = getTaskCategory();
     let idIndex = getIdIndex();
     let taskBoard = getTaskBoardField();
-    
+
     await saveNewTask(taskTitle, taskDescription, assignedTo, dueDate, taskCategory, idIndex, taskBoard);
     resetTaskForm();
     removeStringFromLocalStorage();
@@ -53,7 +52,7 @@ async function defineNewTask() {
 
 async function saveNewTask(taskTitle, taskDescription, assignedTo, dueDate, taskCategory, idIndex, taskBoard) {
     let newTask = {
-        'id':idIndex,
+        'id': idIndex,
         'headline': taskTitle.value,
         'text': taskDescription.value,
         'task_user': assignedTo,
@@ -63,7 +62,6 @@ async function saveNewTask(taskTitle, taskDescription, assignedTo, dueDate, task
         'subtasks': subtasks,
         'task_board': taskBoard,
     }
-
     list.push(newTask);
 
     await SaveInLocalStorageAndServer(user, listString, list);
@@ -78,9 +76,9 @@ function resetTaskForm() {
     document.getElementById('task-title').value = "";
     document.getElementById('task-description').value = "";
     document.getElementById('task-date').value = "";
-    if(taskPrio) {
-    document.getElementById(`prio-bt-${taskPrio}`).style = null;
-    taskPrio = "";
+    if (taskPrio) {
+        document.getElementById(`prio-bt-${taskPrio}`).style = null;
+        taskPrio = "";
     }
     document.getElementById('category').value = "";
     document.getElementById('task-sub-text').innerHTML = "";
@@ -98,16 +96,16 @@ function getAssignedToUsers() {
     let assignedTo = [];
 
     document.querySelectorAll('[type="checkbox"]').forEach(item => {
-        if(item.checked === true) {
+        if (item.checked === true) {
             let divSib = item.previousElementSibling;
             let divIcon = divSib.firstElementChild;
-         
+
             assignedTo.push({
                 'full_name': item.value,
                 'color': divIcon.style.backgroundColor,
                 'name': divIcon.innerHTML,
             });
-        } 
+        }
     });
 
     return assignedTo;
@@ -122,13 +120,13 @@ function getAssignedToUsers() {
 function getTaskCategory() {
     let taskCategoryValue = document.getElementById('category').value;
 
-    if(taskCategoryValue === "Work") {
+    if (taskCategoryValue === "Work") {
         color = '#1FD7C1'
-    } if(taskCategoryValue === "Privat") {
-        color = '#0038FF'; 
-    } if(taskCategoryValue === "Shopping") {
+    } if (taskCategoryValue === "Privat") {
+        color = '#0038FF';
+    } if (taskCategoryValue === "Shopping") {
         color = '#FF7A00';
-    } if(taskCategoryValue === "Other") {
+    } if (taskCategoryValue === "Other") {
         color = '#FFBB2B';
     };
 
@@ -151,12 +149,12 @@ function getIdIndex() {
 
     for (let i = 0; i < list.length; i++) {
         const task = list[i];
-            listOfIds.push(task['id']);
-    } 
+        listOfIds.push(task['id']);
+    }
 
-    listOfIds.sort(function(a, b) {
+    listOfIds.sort(function (a, b) {
         return a - b;
-        });
+    });
 
     return getFreeIdIndex(listOfIds);
 }
@@ -172,12 +170,12 @@ function getFreeIdIndex(listOfIds) {
     let freeIdIndex = [];
 
     for (let j = 0; j < listOfIds.length; j++) {
-        if(j != listOfIds[j]) {
+        if (j != listOfIds[j]) {
             freeIdIndex.push(j);
         }
     }
 
-    if(freeIdIndex.length === 0) {
+    if (freeIdIndex.length === 0) {
         let lastId = listOfIds[listOfIds.length - 1];
         return lastId + 1;
     } else {
@@ -212,14 +210,14 @@ function setPrioButtonColor(prio) {
     }
 
     let prioButton = document.getElementById(`prio-bt-${prio}`)
-    
-    if(prio == 'Urgent') {
+
+    if (prio == 'Urgent') {
         prioButton.style = "backGround-color: #ff3d00; color: white";
     }
-    if(prio == 'Medium') {
+    if (prio == 'Medium') {
         prioButton.style = "backGround-color: #ffa800; color: white";
     }
-    if(prio == 'Low') {
+    if (prio == 'Low') {
         prioButton.style = "backGround-color: #7AE129; color: white";
     };
 }
@@ -239,9 +237,9 @@ function saveStringInLocalStorage(fieldCategory) {
  * This function loads at the beginning of initalizing the page the value. 
  */
 
-function loadStringFromLocalStorage() {            
+function loadStringFromLocalStorage() {
     taskBoardField = localStorage.getItem('fieldCategory');
-    if(taskBoardField == null){
+    if (taskBoardField == null) {
         taskBoardField = "";
     }
 }
@@ -251,8 +249,8 @@ function loadStringFromLocalStorage() {
  */
 
 function removeStringFromLocalStorage() {
-localStorage.removeItem('fieldCategory');
-taskBoardField = "";
+    localStorage.removeItem('fieldCategory');
+    taskBoardField = "";
 }
 
 /**
@@ -262,7 +260,7 @@ taskBoardField = "";
  */
 
 function getTaskBoardField() {
-    if(taskBoardField === "") {
+    if (taskBoardField === "") {
         return "to_do";
     } else {
         return taskBoardField;
@@ -281,12 +279,11 @@ function getTaskBoardField() {
  */
 
 function editTask(id) {
-    if(user === 'guest') {
+    if (user === 'guest') {
         showPopup('Cannot be changed as a guest. Please create an account');
-        closeNewContacts();
     } else {
         insertInputValues(id);
-}
+    }
 }
 
 /**
@@ -297,23 +294,23 @@ function editTask(id) {
  */
 
 function insertInputValues(id) {
-        let index = getIndexTaskEdit(id);
-        changeBoardDetailCard(id, index);
-        let task = list[index];
-        let taskTitle = document.getElementById('task-title');
-        let taskDescription = document.getElementById('task-description');
-        let dueDate = document.getElementById('task-date');
-        let taskCategory = document.getElementById('category');
-        taskPrio = task['priority'];
+    let index = getIndexTaskEdit(id);
+    changeBoardDetailCard(id, index);
+    let task = list[index];
+    let taskTitle = document.getElementById('task-title');
+    let taskDescription = document.getElementById('task-description');
+    let dueDate = document.getElementById('task-date');
+    let taskCategory = document.getElementById('category');
+    taskPrio = task['priority'];
 
-        setPrioButtonColor(taskPrio);
-        saveSubtasksListEdit(task);
-        renderInputText();
+    setPrioButtonColor(taskPrio);
+    saveSubtasksListEdit(task);
+    renderInputText();
 
-        taskTitle.value = task['headline'];
-        taskDescription.value = task['text'];
-        dueDate.value = task['date'];
-        taskCategory.value = task['category']['text']; 
+    taskTitle.value = task['headline'];
+    taskDescription.value = task['text'];
+    dueDate.value = task['date'];
+    taskCategory.value = task['category']['text'];
 }
 
 
@@ -322,23 +319,23 @@ function insertInputValues(id) {
  */
 
 function changeBoardDetailCard(id, i) {
-        let boardDetailBoxCon = document.getElementById('board_detail_box_content');
-        let cardStroy = document.getElementById(`Card_story${id}`); 
-        let editButton = document.getElementById('board_card_bt_edit');
-        document.getElementById('board_card_bt_delete').innerHTML = "";
-        boardDetailBoxCon.innerHTML = "";
-        cardStroy.innerHTML = "";
-        editButton.innerHTML = "";
-        
-        let formContainer = document.createElement("form");
-        let subButton = document.createElement("input");
+    let boardDetailBoxCon = document.getElementById('board_detail_box_content');
+    let cardStroy = document.getElementById(`Card_story${id}`);
+    let editButton = document.getElementById('board_card_bt_edit');
+    document.getElementById('board_card_bt_delete').innerHTML = "";
+    boardDetailBoxCon.innerHTML = "";
+    cardStroy.innerHTML = "";
+    editButton.innerHTML = "";
 
-        formContainer.innerHTML = createAddTask();
-        boardDetailBoxCon.appendChild(formContainer);
-        formContainer.appendChild(subButton);
+    let formContainer = document.createElement("form");
+    let subButton = document.createElement("input");
 
-        changeBoardAttribute(id, i, formContainer, subButton, );
-        changeBoardStyle(subButton, cardStroy, formContainer);
+    formContainer.innerHTML = createAddTask();
+    boardDetailBoxCon.appendChild(formContainer);
+    formContainer.appendChild(subButton);
+
+    changeBoardAttribute(id, i, formContainer, subButton,);
+    changeBoardStyle(subButton, cardStroy, formContainer);
 }
 
 /**
@@ -351,10 +348,10 @@ function changeBoardDetailCard(id, i) {
  */
 
 function changeBoardAttribute(id, i, formContainer, subButton) {
-        formContainer.setAttribute('onsubmit', `changeTask(${id}, ${i}); return false`);
-        formContainer.setAttribute('id', 'edit-task-form');
-        subButton.setAttribute('type', 'submit');
-        subButton.setAttribute('value', 'OK');
+    formContainer.setAttribute('onsubmit', `changeTask(${id}, ${i}); return false`);
+    formContainer.setAttribute('id', 'edit-task-form');
+    subButton.setAttribute('type', 'submit');
+    subButton.setAttribute('value', 'OK');
 }
 
 /**
@@ -366,15 +363,15 @@ function changeBoardAttribute(id, i, formContainer, subButton) {
  */
 
 function changeBoardStyle(subButton, cardStroy, formContainer) {
-        subButton.classList.add('task-button');
-        subButton.classList.add('task-bt-create');
-        subButton.classList.add('task-bt-change');
-        cardStroy.classList.remove('board_detail_header');
-        formContainer.style = 'overflow-y:scroll; height:68vh;';
-        document.getElementById('board_detail_card').style = 'padding-bottom: 60px';
-        document.getElementById('task-input-left').style.width = '100%';
-        document.getElementById('task-input-right').style.width = '100%';
-        document.getElementById('task-hr').classList.add('d-none');
+    subButton.classList.add('task-button');
+    subButton.classList.add('task-bt-create');
+    subButton.classList.add('task-bt-change');
+    cardStroy.classList.remove('board_detail_header');
+    formContainer.style = 'overflow-y:scroll; height:68vh;';
+    document.getElementById('board_detail_card').style = 'padding-bottom: 60px';
+    document.getElementById('task-input-left').style.width = '100%';
+    document.getElementById('task-input-right').style.width = '100%';
+    document.getElementById('task-hr').classList.add('d-none');
 }
 
 /**
@@ -385,12 +382,12 @@ function changeBoardStyle(subButton, cardStroy, formContainer) {
  */
 
 function getIndexTaskEdit(id) {
-        for (let i = 0; i < list.length; i++) {
-            const task = list[i];
-            if(id == task['id']) {
-                return i;
-            }
-        };
+    for (let i = 0; i < list.length; i++) {
+        const task = list[i];
+        if (id == task['id']) {
+            return i;
+        }
+    };
 }
 
 /**
@@ -400,12 +397,12 @@ function getIndexTaskEdit(id) {
  */
 
 function saveSubtasksListEdit(task) {
-        subtasks = [];
-        let taskSubtasks = task['subtasks'];
-        for (let j = 0; j < taskSubtasks.length; j++) {
-            const subtask = taskSubtasks[j];
-                subtasks.push(subtask);
-        }
+    subtasks = [];
+    let taskSubtasks = task['subtasks'];
+    for (let j = 0; j < taskSubtasks.length; j++) {
+        const subtask = taskSubtasks[j];
+        subtasks.push(subtask);
+    }
 }
 
 /**
@@ -419,7 +416,7 @@ async function changeTask(id, i) {
     let taskDescription = document.getElementById('task-description');
     let assignedTo = getAssignedToUsersEditTask(i);
     let dueDate = document.getElementById('task-date');
-    let taskCategory = getTaskCategory(); 
+    let taskCategory = getTaskCategory();
     let taskBoard = list[i]['task_board'];
 
     await saveChangedTask(id, i, taskTitle.value, taskDescription.value, assignedTo, dueDate.value, taskCategory, taskBoard);
@@ -443,8 +440,8 @@ async function changeTask(id, i) {
  */
 
 async function saveChangedTask(id, i, taskTitle, taskDescription, assignedTo, dueDate, taskCategory, taskBoard) {
-        let changedTask = {
-        'id':id,
+    let changedTask = {
+        'id': id,
         'headline': taskTitle,
         'text': taskDescription,
         'task_user': assignedTo,
@@ -468,9 +465,9 @@ async function saveChangedTask(id, i, taskTitle, taskDescription, assignedTo, du
  */
 
 function getAssignedToUsersEditTask(i) {
-    let assignedToUser = getAssignedToUsers(); 
+    let assignedToUser = getAssignedToUsers();
     let assignedTo = [];
-    if(assignedToUser.length === 0) {
+    if (assignedToUser.length === 0) {
         let taskUsers = list[i]['task_user']
         for (let j = 0; j < taskUsers.length; j++) {
             const sglContacts = taskUsers[j];

@@ -1,5 +1,5 @@
-function createAddTask() {
-    return /*html*/`
+function createAddTask(todayDate) {
+  return /*html*/`
             <div id="task-input-left" class="task-input-left">
               <label class="task-label"><span>Title<span class="task-star">*</span></span>
                 <input required class="task-input-fd task-input-fd-ti" type="text" 
@@ -31,7 +31,7 @@ function createAddTask() {
             <div id="task-input-right" class="task-input-right">
               <label class="task-label"><span>Due date<span class="task-star">*</span></span>
                 <input required class="task-input-fd" type="date" name="dd/mm/yyyy" id="task-date" 
-                placeholder="dd/mm/yyyy"
+                placeholder="dd/mm/yyyy" min='${todayDate}'
                 />
               </label>
               <label class="task-label">Prio
@@ -83,7 +83,7 @@ function createAddTask() {
 
 
 function createAssignedToBt(i, contact) {
-    return /*html*/`
+  return /*html*/`
             <div class="task-contacts-list-to-assign-sub">
                 <div class="flex-just-btw-ct">
                     <div style="background-color:${contact['hex_color']};" class="task-contacts-color-icon">${contact['logogram']}</div>
@@ -95,7 +95,7 @@ function createAssignedToBt(i, contact) {
 
 
 function createInputText(i, subtask) {
-    return /*html*/`
+  return /*html*/`
         <div id="subtask-field-${i}" class="d-none flex-just-btw-ct">
             <input id="subtask-input-field-${i}" type="text" class="task-sub-input" minlength="1"/>
             <div class="flex-just-btw-ct task-sub-text-sgl-icons">

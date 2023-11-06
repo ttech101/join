@@ -59,7 +59,7 @@ async function SaveDataInLocalStorageFromServer(users, keyString) {
 async function SaveInLocalStorageAndServer(users, keyString, dataObject) {
     let dataAsText = JSON.stringify(dataObject); // variable list or contacts 
     localStorage.setItem(keyString, dataAsText);
-    setItem(users + `-${keyString}`, dataObject);
+    await setItem(users + `-${keyString}`, dataObject);
 }
 
 /**
