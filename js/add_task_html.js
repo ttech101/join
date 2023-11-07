@@ -91,7 +91,7 @@ function createAddTask(todayDate) {
 /**
  * Creates the contact
  * 
- * @param {index Number} i index for contact
+ * @param {Number} i index for contact
  * @param {array} subtask contact
  * @returns return contact
  */
@@ -109,7 +109,7 @@ function createAssignedToBt(i, contact) {
 /**
  * Creates the texts for the subtask
  * 
- * @param {index Number} i index for subtask
+ * @param {Number} i index for subtask
  * @param {array} subtask subtask content
  * @returns return layout
  */

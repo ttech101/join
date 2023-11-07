@@ -83,7 +83,7 @@ function createBoardSubtasks(taskcompleted, taskall, percent) {
  * @param {date} date 
  * @param {string} priority 
  * @param {string} priority_img 
- * @returns 
+ * @returns return boardcard
  */
 function createBoradCard(id, story, story_bg, headline, text, date, priority, priority_img) {
     return `
@@ -151,7 +151,7 @@ function createBoradCard(id, story, story_bg, headline, text, date, priority, pr
  * @param {string} first_name 
  * @param {string} user 
  * @param {string} color 
- * @returns 
+ * @returns return boardcard user
  */
 function createBoardCardUsers(first_name, user, color) {
     return `
@@ -170,7 +170,7 @@ function createBoardCardUsers(first_name, user, color) {
  * @param {string} status 
  * @param {string} text 
  * @param {string} img 
- * @returns 
+ * @returns return boardcard subtask
  */
 function createBoardCardSubtaks(id, i, status, text, img) {
     return `

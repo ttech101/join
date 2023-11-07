@@ -51,14 +51,6 @@ function showForgotPassword(mode) {
 }
 
 /**
- * Displays a basic alert with the given message.
- * @param {string} message - The message to display in the alert.
- */
-function showPopupAndRedirect(message) {
-    alert(message);
-}
-
-/**
  * Validates if two password fields have the same value.
  * @returns {boolean} Returns true if passwords match, false otherwise.
  */
@@ -131,10 +123,12 @@ function setGuestUser() {
     localStorage.setItem('user', user);
 }
 
+
 /**
- * Displays a popup with the given text and optionally redirects to a specified URL.
- * @param {string} text - The message to display in the popup.
- * @param {string} [url] - Optional. The URL to redirect to after the popup disappears.
+ * Displays a popup with the given text and optionally redirects to a specified URL
+ * 
+ * @param {string} text The message to display in the popup.
+ * @param {string} url Optional. The URL to redirect to after the popup disappears.
  */
 function showPopupAndRedirect(text, url) {
     var popup = document.createElement("div");

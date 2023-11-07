@@ -245,6 +245,16 @@ async function saveChangedContactFunctions(i) {
  * @param {string} contactColor This variable is the color for the contacts icon
  */
 
+/**
+ * This function saves a new contact
+ * 
+ * @param {number} i 
+ * @param {string} contactEmail 
+ * @param {number} contactPhone 
+ * @param {string} contactNameAlterd 
+ * @param {string} logogram 
+ * @param {string} contactColor 
+ */
 async function saveContactValues(i, contactEmail, contactPhone, contactNameAlterd, logogram, contactColor) {
     let newContact = {
         'name': contactNameAlterd,

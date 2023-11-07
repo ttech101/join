@@ -23,7 +23,6 @@ function loadAddTaskForm() {
 /**
  * This function handles the appearance of the assigned to Button
  */
-
 function showAssignedToBt() {
     document.getElementById('task-contacts-list-to-assign').classList.remove('d-none');
     document.getElementById('add-new-contact-bt').classList.remove('d-none');
@@ -134,7 +133,6 @@ function deleteSubtask(i) {
  * 
  * @param {number} i This is the index of the subtask
  */
-
 function editSubtask(i) {
     document.getElementById(`subtask-field-${i}`).classList.remove('d-none');
     document.getElementById(`subtask-li-${i}`).classList.add('d-none');

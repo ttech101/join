@@ -2,7 +2,7 @@
  * This function creates the letters view
  * 
  * @param {*} firstCha 
- * @returns 
+ * @returns return firstCha
  */
 function createContactsListLetters(firstCha) {
     return /*html*/`
@@ -18,7 +18,7 @@ function createContactsListLetters(firstCha) {
  * @param {number} i 
  * @param {string} contact 
  * @param {string} myData 
- * @returns 
+ * @returns return contact layout
  */
 function createContactsHTML(i, contact, myData) {
     return /*html*/`
@@ -36,7 +36,7 @@ function createContactsHTML(i, contact, myData) {
  * 
  * @param {number} i 
  * @param {string} contact 
- * @returns 
+ * @returns return singeln contact
  */
 function createSglContactHTML(i, contact) {
     return /*html*/`
@@ -65,7 +65,7 @@ function createSglContactHTML(i, contact) {
 /**
  * This function creates the individual as a popup
  * 
- * @returns 
+ * @returns return popup contact
  */
 function createPopupContact() {
     return /*html*/`
@@ -109,7 +109,7 @@ function createPopupContact() {
  * This function creates the contact exextiret already icon
  * 
  * @param {number} i 
- * @returns 
+ * @returns return popup exist icon
  */
 function createPopupExistContactIcon(i) {
     return /*html*/`
@@ -120,7 +120,7 @@ function createPopupExistContactIcon(i) {
  * This function creates the contact exextiret already button
  * 
  * @param {number} i 
- * @returns 
+ * @returns return popup exist button
  */
 function createPopupExistContactBt(i) {
     return /*html*/`
