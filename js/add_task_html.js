@@ -74,11 +74,11 @@ function createAddTask(todayDate) {
                       minlength="1"/>
                     <div class="flx task-sub-icons">
                       <div onclick="deleteInputText()" class="flx">
-                        <img src="/img/Close.svg" alt="" />
+                        <img src="../img/Close.svg" alt="" />
                       </div>
                       <div class="task-sub-hr"></div>
                       <div onclick="saveInputText()" class="flx">
-                        <img class="task-sub-input-img" src="/img/task_check_bl.svg" alt="" />
+                        <img class="task-sub-input-img" src="../img/task_check_bl.svg" alt="" />
                       </div>
                     </div>
                   </div>
@@ -118,10 +118,10 @@ function createInputText(i, subtask) {
         <div id="subtask-field-${i}" class="d-none flex-just-btw-ct">
             <input id="subtask-input-field-${i}" type="text" class="task-sub-input" minlength="1"/>
             <div class="flex-just-btw-ct task-sub-text-sgl-icons">
-                <div onclick="deleteSubtask(${i})" class="task-sub-text-sgl-icons-con"><img src="/img/delete.svg" alt=""/></div>
+                <div onclick="deleteSubtask(${i})" class="task-sub-text-sgl-icons-con"><img src="../img/delete.svg" alt=""/></div>
                 <div class="task-sub-hr"></div>
                 <div onclick="saveEditedSubtask(${i})" class="task-sub-text-sgl-icons-con"><img 
-                    src="/img/task_check_bl.svg" alt=""/>
+                    src="../img/task_check_bl.svg" alt=""/>
                 </div>
             </div>
         </div>
@@ -130,9 +130,9 @@ function createInputText(i, subtask) {
                 ${subtask['text']}
             </li>
             <div class="flex-just-btw-ct task-sub-text-sgl-icons">                        
-                <div onclick="editSubtask(${i})" class="task-sub-text-sgl-icons-con"><img src="/img/edit.svg" alt=""/></div>
+                <div onclick="editSubtask(${i})" class="task-sub-text-sgl-icons-con"><img src="../img/edit.svg" alt=""/></div>
                 <div class="task-sub-hr"></div>
-                <div onclick="deleteSubtask(${i})" class="task-sub-text-sgl-icons-con"><img src="/img/delete.svg" alt=""/></div>
+                <div onclick="deleteSubtask(${i})" class="task-sub-text-sgl-icons-con"><img src="../img/delete.svg" alt=""/></div>
             </div>
         </div>`;
 }

@@ -7,7 +7,6 @@ body {
     left: 232px;
     right: 0;
     top: 100px;
-
     overflow: hidden;
 }
 
@@ -371,14 +370,18 @@ h1 {
 }
 
 .board_detail_card::-webkit-scrollbar {
+    padding-top: 50px;
     width: 16px;
 }
 
 .board_detail_card::-webkit-scrollbar-track {
+     margin-top: 25px;
+     margin-bottom: 25px;
     background: transparent;
 }
 
 .board_detail_card::-webkit-scrollbar-thumb {
+    
     margin-right: 10px;
     background-color: #6C757D;
     border-radius: 10px;
@@ -386,11 +389,13 @@ h1 {
 }
 
 .board_detail_card::-webkit-scrollbar-button:vertical:decrement {
+    
     border-bottom-left-radius: 8.5px;
     border-bottom-right-radius: 8.5px;
 }
 
 .board_detail_card::-webkit-scrollbar-button:vertical:increment {
+   
     border-top-left-radius: 8.5px;
     border-top-right-radius: 8.5px;
 }

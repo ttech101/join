@@ -324,6 +324,7 @@ function changeBoardAttribute(id, i, formContainer, subButton) {
     formContainer.setAttribute('onsubmit', `changeTask(${id}, ${i}); return false`);
     formContainer.setAttribute('id', 'edit-task-form');
     subButton.setAttribute('value', 'OK');
+    subButton.setAttribute('style', 'z-index: 5');
     subButton.setAttribute('type', 'submit');
 
 }
@@ -340,7 +341,6 @@ function changeBoardStyle(subButton, cardStroy, formContainer) {
     subButton.classList.add('task-bt-create');
     subButton.classList.add('task-bt-change');
     cardStroy.classList.remove('board_detail_header');
-    //formContainer.style = 'overflow-y:scroll; height:60vh; bottom:140px;top:96px ; width:100%';
     formContainer.classList.add('board_edit_task');
     document.getElementById('board_detail_card').style = 'padding-bottom: 60px;margin-bottom: 60px';
     document.getElementById('task-input-left').style.width = '100%';

@@ -193,21 +193,21 @@
 }
 
 .contact-bt-sgl-edit {
-    background-image: url("/img/edit.svg");
+    background-image: url("../img/edit.svg");
     margin-right: 8px;
 }
 
 .contact-bt-sgl-edit:hover {
-    background-image: url("/img/edit_blue.svg");
+    background-image: url("../img/edit_blue.svg");
     background-size: 38%;
 }
 
 .contact-bt-sgl-delete {
-    background-image: url("/img/delete.svg");
+    background-image: url("../img/delete.svg");
 }
 
 .contact-bt-sgl-delete:hover {
-    background-image: url("/img/delete_blue.svg");
+    background-image: url("../img/delete_blue.svg");
     background-size: 29%;
 }
 
@@ -256,7 +256,7 @@
 }
 
 .contacts-add-con-show {
-    background-image: url(/img/task_cancel_blue.svg);
+    background-image: url(../img/task_cancel_blue.svg);
     background-repeat: no-repeat;
     transform: translateX(0);
 }
@@ -307,7 +307,7 @@
 }
 
 .contacts-add-close-con {
-    background-image: url("/img/task_cancel.svg");
+    background-image: url("../img/task_cancel.svg");
     background-repeat: no-repeat;
     background-position: center;
     width: 32px;
@@ -434,20 +434,20 @@
 
 .contacts-bt-check {
     padding-right: 40px;
-    background-image: url(/img/task_check.svg);
+    background-image: url(../img/task_check.svg);
     background-position: 92% 50%;
     background-repeat: no-repeat;
 }
 
 .contacts-bt-cancel {
     padding-right: 40px;
-    background-image: url(/img/task_cancel.svg);
+    background-image: url(../img/task_cancel.svg);
     background-position: 92% 50%;
     background-repeat: no-repeat;
 }
 
 .contacts-bt-cancel:hover {
-    background-image: url(/img/task_cancel_blue.svg);
+    background-image: url(../img/task_cancel_blue.svg);
     background-size: 21%;
 }
 
@@ -706,7 +706,7 @@
 
     .contacts-add-close-con {
         background-color: #2A3647;
-        background-image: url("/img/task_cancel_white.svg");
+        background-image: url("../img/task_cancel_white.svg");
     }
 
     .contacts-add-close-con:hover {
