@@ -13,6 +13,10 @@ async function createNewContact() {
     }
 }
 
+
+/**
+ * Saving a new contact
+ */
 async function saveNewContact() {
     let contactName = document.getElementById('popup-contact-name');
     let contactNameAlterd = contactName.value.charAt(0).toUpperCase() + contactName.value.slice(1);
@@ -20,11 +24,9 @@ async function saveNewContact() {
     let contactPhone = document.getElementById('popup-contact-phone');
     let logogram = getLogogram(contactNameAlterd);
     let contactColor = getContactColor();
-    
     await saveNewContactValues(contactNameAlterd, contactEmail, contactPhone, logogram, contactColor);
     resetForm(contactName, contactEmail, contactPhone);
     closeNewContacts();
-
     if ( document.URL.includes("add_task.html") || document.URL.includes("board.html")) {
         if(document.URL.includes("add_task.html")) {
         sortContactsList();
@@ -33,7 +35,6 @@ async function saveNewContact() {
     } else {
         updateContactsPage(contactNameAlterd);
     };
-
     showPopup('Contact succesfully created');
 }
 
@@ -47,7 +48,6 @@ async function saveNewContact() {
  * @param {string} logogram This varable is the logogram of the new contacts icon
  * @param {string} contactColor This varable is the color of the new contacts icon
  */
-
 async function saveNewContactValues(contactNameAlterd, contactEmail, contactPhone, logogram, contactColor) {
     let newContact = {
         'name': contactNameAlterd,
@@ -56,7 +56,6 @@ async function saveNewContactValues(contactNameAlterd, contactEmail, contactPhon
         'logogram': logogram,
         'hex_color': contactColor
     };
-
     contacts.push(newContact);
     await SaveInLocalStorageAndServer(user, contactsString, contacts);
 }
@@ -68,7 +67,6 @@ async function saveNewContactValues(contactNameAlterd, contactEmail, contactPhon
  * @param {string} contactEmail This varable is the email of the new contact  
  * @param {string} contactPhone This varable is the phone number of the new contact 
  */
-
 function resetForm(contactName, contactEmail, contactPhone) {
     contactName.value = "";
     contactEmail.value = "";
@@ -81,11 +79,9 @@ function resetForm(contactName, contactEmail, contactPhone) {
  * @param {string} name This variable is the name of the contact
  * @returns The first letters of the fist and last name
  */
-
 function getLogogram(name) {
     let firstCha = name.toString().charAt(0);
     let secondCha = name.toString().trim().split(" ").splice(-1).toString().charAt(0);
-
     return firstCha + secondCha;
 }
 
@@ -94,7 +90,6 @@ function getLogogram(name) {
  * 
  * @returns A color code
  */
-
 function getContactColor() {
     let randomColor = hexColors[Math.floor(Math.random()*hexColors.length)];
     return randomColor;
@@ -106,11 +101,9 @@ function getContactColor() {
  * 
  * @param {string} contactNameAlterd This variable is the name of the contact
  */
-
 function updateContactsPage(contactNameAlterd) {
     renderContacts();
-    let index;
-        
+    let index;    
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         const contactName = contact['name'];
@@ -118,7 +111,6 @@ function updateContactsPage(contactNameAlterd) {
                 index = i;
         }
     }
-
     showContact(index);
 }
 
@@ -129,7 +121,6 @@ function updateContactsPage(contactNameAlterd) {
  * 
  * @param {number} i This is the index of a contact
  */
-
 async function deleteContacts(i) {
     if(user === 'guest' || user === contacts[i]['email']) {
         if (user === 'guest') {
@@ -141,7 +132,6 @@ async function deleteContacts(i) {
     } else {
     deleteFromList(i);
     contacts.splice(i,1);
-
     await SaveInLocalStorageAndServer(user, contactsString, contacts);
     renderContacts();
     closeNewContacts();
@@ -153,7 +143,6 @@ async function deleteContacts(i) {
 /**
  * This function empties the html content form the container
  */
-
 function removeFromMainPage() {
     document.getElementById('contact-clicked').innerHTML = "";
 }
@@ -164,7 +153,6 @@ function removeFromMainPage() {
  * 
  * @param {number} i This variable is the index of the contact
  */
-
 function deleteFromList(i) {
     let contactName = contacts[i]['name'];
 
@@ -191,10 +179,8 @@ function deleteFromList(i) {
  * @param {object} task 
  * @param {number} j This variable is the index of the task within the list array
  */
-
 function changeUsersInTask(users, k, task, j) {
     users.splice(k,1);
-
     let id = task['id'];
     let taskTitle = task['headline'];
     let taskDescription = task['text'];
@@ -204,7 +190,6 @@ function changeUsersInTask(users, k, task, j) {
     let taskCategory = task['category'];
     subtasks = task['subtasks'];
     let taskBoard = task['task_board'];
-
     saveChangedTask(id, j, taskTitle, taskDescription, assignedTo, dueDate, taskCategory, taskBoard);    
 }
 
@@ -215,7 +200,6 @@ function changeUsersInTask(users, k, task, j) {
  * 
  * @param {number} i This is the index of the contact
  */
-
 async function saveChangedContact(i) {
     if(user === 'guest' || user === contacts[i]['email']) {
         if (user === 'guest') {
@@ -233,7 +217,6 @@ async function saveChangedContact(i) {
 /**
  * This functin calls all the functions to save the changes.
  */
-
 async function saveChangedContactFunctions(i) {
     let contactName = document.getElementById('popup-contact-name');
     let contactEmail = document.getElementById('popup-contact-email');
@@ -241,7 +224,6 @@ async function saveChangedContactFunctions(i) {
     let contactNameAlterd = contactName.value.charAt(0).toUpperCase() + contactName.value.slice(1)
     let logogram = getLogogram(contactNameAlterd);
     let contactColor = getContactColor();
-
     await saveContactValues(i, contactEmail, contactPhone, contactNameAlterd, logogram, contactColor);
     renderContacts();
     resetForm(contactName, contactEmail, contactPhone);
@@ -271,7 +253,6 @@ async function saveContactValues(i, contactEmail, contactPhone, contactNameAlter
         'logogram': logogram,
         'hex_color': contactColor
     };
-
     contacts.splice(i, 1, newContact);
     await SaveInLocalStorageAndServer(user, contactsString, contacts);
 }

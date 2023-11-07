@@ -35,7 +35,6 @@ async function getItem(key) {
     });
 }
 
-
 /**
  * This function saves the user data in the local storage and on the server
  * 
@@ -47,7 +46,6 @@ async function SaveDataInLocalStorageFromServer(users, keyString) {
     let dataAsText = JSON.stringify(data);
     localStorage.setItem(keyString, dataAsText);
 }
-
 
 /**
  * This function saves the user data in the local storage and on the server

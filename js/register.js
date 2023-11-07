@@ -68,17 +68,14 @@ function validateRegistrationFields() {
         showPopup('Please accept the privacy policy before proceeding.');
         return false;
     }
-
     let email = document.getElementById('emailregister').value;
     let password1 = document.getElementById('passwordregister1').value;
     let password2 = document.getElementById('passwordregister2').value;
     let existingUser = users.find(u => u.email === email);
-
     if (existingUser) {
         showPopup('This email address is already registered. Please use a different one.');
         return false;
     }
-
     if (password1 !== password2) {
         showPopup('Your password does not match.');
         return false;
@@ -155,6 +152,9 @@ function addUserToContacts(user, name, new_contact) {
     }
 }
 
+/**
+ * Here the password is reset and the user can create a new one
+ */
 async function changePassword() {
     if (validatePasswords()) {
         let password = document.getElementById('ForgotPassword1').value;

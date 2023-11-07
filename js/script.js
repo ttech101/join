@@ -148,7 +148,6 @@ function showPopupAndRedirect(text, url) {
         popup.style.top = "-100px";
         setTimeout(function () {
             document.body.removeChild(popup);
-
             if (url) {
                 window.location.href = url;
             }
@@ -181,7 +180,9 @@ function openHTML(html) {
     location.href = html;
 }
 
-// Header
+/** 
+ * Header
+ */
 function userNavbar() {
     let navbar = document.getElementById('navbar');
     if (navbar.classList.contains('d-none')) {
@@ -191,7 +192,9 @@ function userNavbar() {
     }
 }
 
-
+/**
+ * Create Header Name
+ */
 function createHeaderName() {
     for (let i = 0; i < contacts.length; i++) {
         const element = contacts[i];
@@ -205,6 +208,9 @@ function createHeaderName() {
     }
 }
 
+/**
+ * Load of info page the user
+ */
 async function initHelp() {
     console.log(user)
     await loadUserData();

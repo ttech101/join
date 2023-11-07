@@ -1,3 +1,10 @@
+/**
+ * Creates the layout for adding a task
+ * 
+ * @param {date} todayDate  today's date
+ * @returns layout
+ */
+
 function createAddTask(todayDate) {
   return /*html*/`
             <div id="task-input-left" class="task-input-left">
@@ -81,7 +88,13 @@ function createAddTask(todayDate) {
             </div>`;
 }
 
-
+/**
+ * Creates the contact
+ * 
+ * @param {index Number} i index for contact
+ * @param {array} subtask contact
+ * @returns return contact
+ */
 function createAssignedToBt(i, contact) {
   return /*html*/`
             <div class="task-contacts-list-to-assign-sub">
@@ -93,7 +106,13 @@ function createAssignedToBt(i, contact) {
             </div>`;
 }
 
-
+/**
+ * Creates the texts for the subtask
+ * 
+ * @param {index Number} i index for subtask
+ * @param {array} subtask subtask content
+ * @returns return layout
+ */
 function createInputText(i, subtask) {
   return /*html*/`
         <div id="subtask-field-${i}" class="d-none flex-just-btw-ct">

@@ -2,9 +2,6 @@ let taskPrio = "";
 let subtasks = [];
 let taskBoardField = "";
 
-
-// Create new Task
-
 /**
  * This function starts the functions to create a new task.
  */
@@ -20,7 +17,6 @@ async function createNewTask() {
 /**
  * This function defines the new Task values and calls all the neccessary functions.
  */
-
 async function defineNewTask() {
     let taskTitle = document.getElementById('task-title');
     let taskDescription = document.getElementById('task-description');
@@ -49,7 +45,6 @@ async function defineNewTask() {
  * @param {number} idIndex This variable is the given Id of the task
  * @param {string} taskBoard This variable is the name of the board where the task will be placed
  */
-
 async function saveNewTask(taskTitle, taskDescription, assignedTo, dueDate, taskCategory, idIndex, taskBoard) {
     let newTask = {
         'id': idIndex,
@@ -67,11 +62,9 @@ async function saveNewTask(taskTitle, taskDescription, assignedTo, dueDate, task
     await SaveInLocalStorageAndServer(user, listString, list);
 }
 
-
 /**
  * This function empties all the input fileds from the form element
  */
-
 function resetTaskForm() {
     document.getElementById('task-title').value = "";
     document.getElementById('task-description').value = "";
@@ -91,7 +84,6 @@ function resetTaskForm() {
  * 
  * @returns An array of all the choosen contacts
  */
-
 function getAssignedToUsers() {
     let assignedTo = [];
 
@@ -116,7 +108,6 @@ function getAssignedToUsers() {
  * 
  * @returns An object with the task category and its corresponding color
  */
-
 function getTaskCategory() {
     let taskCategoryValue = document.getElementById('category').value;
 
@@ -143,7 +134,6 @@ function getTaskCategory() {
  * 
  * @returns The function getFreeIdIndex(listOfIds) returns a Id which is not given yet.
  */
-
 function getIdIndex() {
     let listOfIds = [];
 
@@ -165,7 +155,6 @@ function getIdIndex() {
  * @param {number} listOfIds This variable is a array of Id's form the list array.
  * @returns The function getFreeIdIndex(listOfIds) returns a Id which is not given yet.
  */
-
 function getFreeIdIndex(listOfIds) {
     let freeIdIndex = [];
 
@@ -189,7 +178,6 @@ function getFreeIdIndex(listOfIds) {
  * 
  * @param {string} prio This variable stands for the choosen priority.
  */
-
 function setTaskPrio(prio) {
     taskPrio = prio;
 
@@ -201,7 +189,6 @@ function setTaskPrio(prio) {
  * 
  * @param {string} prio This variable stands for the choosen priority.
  */
-
 function setPrioButtonColor(prio) {
     let prios = ['Urgent', 'Medium', 'Low'];
     for (let i = 0; i < prios.length; i++) {
@@ -228,7 +215,6 @@ function setPrioButtonColor(prio) {
  * 
  * @param {string} fieldCategory This variable is the name of the board category
  */
-
 function saveStringInLocalStorage(fieldCategory) {
     localStorage.setItem('fieldCategory', fieldCategory);
 }
@@ -236,7 +222,6 @@ function saveStringInLocalStorage(fieldCategory) {
 /**
  * This function loads at the beginning of initalizing the page the value. 
  */
-
 function loadStringFromLocalStorage() {
     taskBoardField = localStorage.getItem('fieldCategory');
     if (taskBoardField == null) {
@@ -247,7 +232,6 @@ function loadStringFromLocalStorage() {
 /**
  * This function will delete the what is saved in localStorage with the key 'fieldCategory'.
  */
-
 function removeStringFromLocalStorage() {
     localStorage.removeItem('fieldCategory');
     taskBoardField = "";
@@ -258,7 +242,6 @@ function removeStringFromLocalStorage() {
  * 
  * @returns A string which defines the board catergory
  */
-
 function getTaskBoardField() {
     if (taskBoardField === "") {
         return "to_do";
@@ -266,8 +249,6 @@ function getTaskBoardField() {
         return taskBoardField;
     }
 }
-
-
 
 // Edit Task
 
@@ -277,7 +258,6 @@ function getTaskBoardField() {
  * 
  * @param {number} id This variable is the assigned id of the task
  */
-
 function editTask(id) {
     if (user === 'guest') {
         showPopup('Cannot be changed as a guest. Please create an account');
@@ -292,7 +272,6 @@ function editTask(id) {
  * 
  * @param {number} id This variable is the assigned id of the task
  */
-
 function insertInputValues(id) {
     let index = getIndexTaskEdit(id);
     changeBoardDetailCard(id, index);
@@ -302,11 +281,9 @@ function insertInputValues(id) {
     let dueDate = document.getElementById('task-date');
     let taskCategory = document.getElementById('category');
     taskPrio = task['priority'];
-
     setPrioButtonColor(taskPrio);
     saveSubtasksListEdit(task);
     renderInputText();
-
     taskTitle.value = task['headline'];
     taskDescription.value = task['text'];
     dueDate.value = task['date'];
@@ -317,7 +294,6 @@ function insertInputValues(id) {
 /**
  * This function changes the appearance of the card to a form element
  */
-
 function changeBoardDetailCard(id, i) {
     let boardDetailBoxCon = document.getElementById('board_detail_box_content');
     let cardStroy = document.getElementById(`Card_story${id}`);
@@ -326,14 +302,12 @@ function changeBoardDetailCard(id, i) {
     boardDetailBoxCon.innerHTML = "";
     cardStroy.innerHTML = "";
     editButton.innerHTML = "";
-
     let formContainer = document.createElement("form");
     let subButton = document.createElement("input");
     let todayDate = getCurrentDate();
     formContainer.innerHTML = createAddTask(todayDate);
     boardDetailBoxCon.appendChild(formContainer);
     formContainer.appendChild(subButton);
-
     changeBoardAttribute(id, i, formContainer, subButton,);
     changeBoardStyle(subButton, cardStroy, formContainer);
 }
@@ -346,7 +320,6 @@ function changeBoardDetailCard(id, i) {
  * @param {*} formContainer 
  * @param {*} subButton 
  */
-
 function changeBoardAttribute(id, i, formContainer, subButton) {
     formContainer.setAttribute('onsubmit', `changeTask(${id}, ${i}); return false`);
     formContainer.setAttribute('id', 'edit-task-form');
@@ -362,7 +335,6 @@ function changeBoardAttribute(id, i, formContainer, subButton) {
  * @param {*} cardStroy 
  * @param {*} formContainer 
  */
-
 function changeBoardStyle(subButton, cardStroy, formContainer) {
     subButton.classList.add('task-button');
     subButton.classList.add('task-bt-create');
@@ -382,7 +354,6 @@ function changeBoardStyle(subButton, cardStroy, formContainer) {
  * @param {number} id This variable is the assigned id of the task
  * @returns The index of the task within the list array
  */
-
 function getIndexTaskEdit(id) {
     for (let i = 0; i < list.length; i++) {
         const task = list[i];
@@ -397,7 +368,6 @@ function getIndexTaskEdit(id) {
  * 
  * @param {object} task 
  */
-
 function saveSubtasksListEdit(task) {
     subtasks = [];
     let taskSubtasks = task['subtasks'];
@@ -412,7 +382,6 @@ function saveSubtasksListEdit(task) {
  * @param {number} id This variable is the assigned id of the task
  * @param {number} i This variable is the task index in the list array
  */
-
 async function changeTask(id, i) {
     let taskTitle = document.getElementById('task-title');
     let taskDescription = document.getElementById('task-description');
@@ -440,7 +409,6 @@ async function changeTask(id, i) {
  * @param {object} taskCategory This varibale is the category the task is assigned to
  * @param {string} taskBoard This varibale is the category for the board fields
  */
-
 async function saveChangedTask(id, i, taskTitle, taskDescription, assignedTo, dueDate, taskCategory, taskBoard) {
     let changedTask = {
         'id': id,
@@ -465,7 +433,6 @@ async function saveChangedTask(id, i, taskTitle, taskDescription, assignedTo, du
  * @param {number} i This variable is the task index in the list array
  * @returns A object with the assigned to users
  */
-
 function getAssignedToUsersEditTask(i) {
     let assignedToUser = getAssignedToUsers();
     let assignedTo = [];

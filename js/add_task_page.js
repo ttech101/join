@@ -1,9 +1,6 @@
-// Add Task page functionality
-
 /**
  * This function starts the functions to load all the necessary data
  */
-
 async function initAddTask() {
     loadAddTaskForm();
     await loadUserData();
@@ -13,17 +10,15 @@ async function initAddTask() {
     createHeaderName();
 }
 
-
-// Load Add Task Form Element
-
+/**
+ * Load Add Task Form Element
+ */
 function loadAddTaskForm() {
     let AddTaskForm = document.getElementById('task-input-con');
     AddTaskForm.innerHTML = "";
     let todayDate = getCurrentDate();
     AddTaskForm.innerHTML = createAddTask(todayDate);
 }
-
-//  Assigned To Field - render Contacts list 
 
 /**
  * This function handles the appearance of the assigned to Button
@@ -46,7 +41,6 @@ function showAssignedToBt() {
 /**
  * This function generates the html code for the assigned to Button with all the saved contacts.
  */
-
 function renderAssignedToBt() {
     let contactsListToAssignCon = document.getElementById('task-contacts-list-to-assign');
     contactsListToAssignCon.innerHTML = "";
@@ -57,13 +51,9 @@ function renderAssignedToBt() {
     }
 }
 
-
-//  Assigned To Field - Popup and Close Function 
-
 /**
  * This function closes the container with all the contacts listed.
  */
-
 function closeAssignedToField() {
     let listOfContactsToAssigne = document.getElementById('task-contacts-list-to-assign');
     if(listOfContactsToAssigne) {
@@ -79,19 +69,13 @@ function closeAssignedToField() {
  * 
  * @param {*} event 
  */
-
 function stopClosing(event) {
     event.stopPropagation();
 }
 
-
-
-// subtask input field
-
 /**
  * This function opens the subtext input by clicking on the subtask Button.
  */
-
 function changeToSubText() {
     let subtaskButtonOpen = document.getElementById('task-sub-bt-open');
     subtaskButtonOpen.classList.add('d-none');
@@ -102,7 +86,6 @@ function changeToSubText() {
 /**
  * This function deletes the input value.
  */
-
 function deleteInputText() {
     document.getElementById('task-sub-input-text').value = "";
 }
@@ -110,7 +93,6 @@ function deleteInputText() {
 /**
  * This function saves the input value as an object in newSubtask and than within the array subtasks.
  */
-
 function saveInputText() {
     let subtaskInput = document.getElementById('task-sub-input-text'); 
 
@@ -127,7 +109,6 @@ function saveInputText() {
 /**
  * The new subtask within the subtasks array is generated under the subtask Button
  */
-
 function renderInputText() {
     let subtaskTextCon = document.getElementById('task-sub-text');
     subtaskTextCon.innerHTML = "";
@@ -143,7 +124,6 @@ function renderInputText() {
  * 
  * @param {number} i This is the index of the subtask
  */
-
 function deleteSubtask(i) {
     subtasks.splice(i,1);
     renderInputText();

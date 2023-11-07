@@ -1,3 +1,9 @@
+/**
+ * This function creates the letters view
+ * 
+ * @param {*} firstCha 
+ * @returns 
+ */
 function createContactsListLetters(firstCha) {
     return /*html*/`
         <div>
@@ -6,7 +12,14 @@ function createContactsListLetters(firstCha) {
         </div>`;
 }
 
-
+/**
+ * This function creates the layout for contacting you
+ * 
+ * @param {number} i 
+ * @param {string} contact 
+ * @param {string} myData 
+ * @returns 
+ */
 function createContactsHTML(i, contact, myData) {
     return /*html*/`
             <div id="contact-con-${i}" class="contacts-list-sgl-con" onclick="showContact(${i})">
@@ -18,7 +31,13 @@ function createContactsHTML(i, contact, myData) {
             </div>`;
 }
 
-
+/**
+ * This function creates the individual contact
+ * 
+ * @param {number} i 
+ * @param {string} contact 
+ * @returns 
+ */
 function createSglContactHTML(i, contact) {
     return /*html*/`
         <div id="contact-con-${i}" class="flx-col">
@@ -43,7 +62,11 @@ function createSglContactHTML(i, contact) {
     `
 }
 
-
+/**
+ * This function creates the individual as a popup
+ * 
+ * @returns 
+ */
 function createPopupContact() {
     return /*html*/`
         <div id="contacts-add-con" class="contacts-add-con" onclick="stopClosing(event)">
@@ -82,12 +105,23 @@ function createPopupContact() {
         </div>`;
 }
 
-
+/**
+ * This function creates the contact exextiret already icon
+ * 
+ * @param {number} i 
+ * @returns 
+ */
 function createPopupExistContactIcon(i) {
     return /*html*/`
         <div style="background-color:${contacts[i]['hex_color']};" class="contacts-color-icon contacts-user-logo contacts-user-popup">${contacts[i]['logogram']}</div>`;
 }
 
+/**
+ * This function creates the contact exextiret already button
+ * 
+ * @param {number} i 
+ * @returns 
+ */
 function createPopupExistContactBt(i) {
     return /*html*/`
         <input type="button" value="Delete" id="contacts-bt-delet" onclick="deleteContacts(${i})" class="contacts-button contacts-bt-delet contacts-bt-ft">

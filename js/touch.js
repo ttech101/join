@@ -27,7 +27,6 @@ let ist_position;           //set value ist_position
 /**
  * This function starts the initialization of the tocu function
  */
-
 function loadTouch() {
     task = document.querySelectorAll('.board_note');
     toDo = document.querySelector('.board_to_do');

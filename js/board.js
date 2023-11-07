@@ -34,7 +34,7 @@ function filterTaskBoard(task_board) {
             const element = filter[i];
             let priority_img = '../img/task-prio-' + element.priority.charAt(0).toLowerCase() + '.svg';
             document.getElementById('board_' + task_board).innerHTML +=
-                createBoardTasks(element.id, element.category, element.headline, element.text, priority_img);
+            createBoardTasks(element.id, element.category, element.headline, element.text, priority_img);
             loadBoardUsers(element.id, element.task_user);
             loadBoardSubtasks(element.id, element.subtasks);
         }
@@ -219,6 +219,9 @@ function deleteTask(id) {
     }
 }
 
+/**
+ * Creates a popup when saving as a guest
+ */
 function addGuestTask() {
     if (user == 'guest') {
         showPopup('Cannot be deleted as a guest. Please create an account')
