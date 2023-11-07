@@ -42,7 +42,7 @@ async function loadUsers() {
             users = [];
         }
     } catch (e) {
-        console.error('Loading error:', e);
+        //console.error('Loading error:', e);
     }
 }
 
@@ -54,7 +54,7 @@ async function register() {
     if (!validateRegistrationFields()) {
         return;
     }
-    
+
     await processRegistration();
 }
 
@@ -73,7 +73,7 @@ function validateRegistrationFields() {
     let password1 = document.getElementById('passwordregister1').value;
     let password2 = document.getElementById('passwordregister2').value;
     let existingUser = users.find(u => u.email === email);
-    
+
     if (existingUser) {
         showPopup('This email address is already registered. Please use a different one.');
         return false;
@@ -97,6 +97,7 @@ async function processRegistration() {
     let registerBtn = document.getElementById('registerBtn');
 
     registerBtn.disabled = true;
+    await loadUsers();
     users.push({
         name: name.value,
         email: email.value,
@@ -141,7 +142,7 @@ async function loadStandardUserListAndContacts(user, name) {
  * @returns {number} The new length of the contacts list after adding the user.
  */
 function addUserToContacts(user, name, new_contact) {
-    if(user !== 'guest') {
+    if (user !== 'guest') {
         let nameAlterd = name.charAt(0).toUpperCase() + name.slice(1);
         let ownContactData = {
             'name': nameAlterd,
@@ -151,5 +152,21 @@ function addUserToContacts(user, name, new_contact) {
             'hex_color': getContactColor()
         }
         return new_contact.push(ownContactData);
+    }
+}
+
+async function changePassword() {
+    if (validatePasswords()) {
+        let password = document.getElementById('ForgotPassword1').value;
+        for (let i = 0; i < users.length; i++) {
+            const element = users[i];
+            if (element.email == user.email) {
+                element.password = password;
+            }
+            await setItem('users', JSON.stringify(users));
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 2000);
+        }
     }
 }

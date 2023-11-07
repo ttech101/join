@@ -131,10 +131,8 @@ function saveInputText() {
 function renderInputText() {
     let subtaskTextCon = document.getElementById('task-sub-text');
     subtaskTextCon.innerHTML = "";
-
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
-        
         subtaskTextCon.innerHTML += createInputText(i, subtask);
     }
 }
@@ -148,7 +146,6 @@ function renderInputText() {
 
 function deleteSubtask(i) {
     subtasks.splice(i,1);
-
     renderInputText();
 }
 
@@ -174,10 +171,8 @@ function editSubtask(i) {
 function saveEditedSubtask(i) {
     let subtaskInputField = document.getElementById(`subtask-input-field-${i}`);
     subtasks[i]['text'] = subtaskInputField.value;
-
     document.getElementById(`subtask-field-${i}`).classList.add('d-none');
     document.getElementById(`subtask-li-${i}`).classList.remove('d-none');
-
     renderInputText();
 }
 

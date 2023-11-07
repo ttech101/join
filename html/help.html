@@ -7,23 +7,23 @@
   <title>Join/Help</title>
   <link rel="stylesheet" href="../css/help.css" />
   <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/sidebar.css" />
   <link rel="stylesheet" href="../css/fonts.css" />
   <link rel="stylesheet" href="../css/contacts.css" />
   <script src="../js/storage.js"></script>
   <script src="../js/script.js"></script>
-
   <script src="../js/includeHTML.js"></script>
 </head>
 
-<body onload="includeHTML();createHeaderName();">
-  <div w3-include-html="/templates/header.html"></div>
-  <div w3-include-html="/templates/sidebar.html"></div>
+<body onload="includeHTML();initHelp()">
+  <div w3-include-html="../templates/header.html"></div>
+  <div w3-include-html="../templates/sidebar.html"></div>
   <div class="help-header">
     <div class="help-content">
       <div class="help-img">
         <h1>Help</h1>
-        <img onclick="openPage('/html/summary.html')" src="../img/arrow-left-line.svg" />
+        <img onclick="openPage('../html/summary.html')" src="../img/arrow-left-line.svg" />
       </div>
       <h2 style="font-size: 26px">What is Join?</h2>
       <span>This tool is a versatile solution that incorporates a Kanban board.

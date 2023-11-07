@@ -11,6 +11,7 @@
     font-weight: 700;
     line-height: 73.2px;
     transition: all 0.5s;
+    transition: all 0.5s;
 }
 
 
@@ -23,6 +24,7 @@
     margin-top: 96px;
     width: 100%;
     margin-left: 5%;
+    transition: all 0.5s;
 
 }
 
@@ -35,6 +37,7 @@
     flex-direction: column;
     gap: 30px;
     width: 440px;
+    transition: all 0.5s;
 }
 
 .task-hr {
@@ -42,6 +45,7 @@
     height: 424px;
     margin: 0 48.125px;
     width: 1px;
+    transition: all 0.5s;
 }
 
 .task-input-right {
@@ -50,6 +54,7 @@
     gap: 30px;
     justify-content: space-between;
     width: 440px;
+    transition: all 0.5s;
 }
 
 
@@ -76,12 +81,28 @@
     font-size: 20px;
     line-height: 24px;
     padding: 12px 16px;
+    transition: all 0.5s;
 }
 
 .task-input-fd::placeholder {
     color: #d1d1d1;
     font-family: 'Inter', sans-serif;
 }
+
+.task-input-fd::-webkit-scrollbar {
+    width: 16px;
+}
+
+.task-input-fd::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+.task-input-fd::-webkit-scrollbar-thumb {
+    background-color: #6C757D;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+}
+
 
 
 /* Form field - Title & Description */
@@ -93,6 +114,7 @@
 .task-input-fd-desc {
     height: 82px;
     padding: 18px 16px;
+    transition: all 0.5s;
 }
 
 /* Form field - Assigned to Popup Button */
@@ -107,7 +129,7 @@
 }
 
 .task-assigned-to {
-    background-image: url(/img/arrow_drop_dow.svg);
+    background-image: url(../img/arrow_drop_dow.svg);
     background-position: 95% 50%;
     background-repeat: no-repeat;
     color: #D1D1D1;
@@ -117,6 +139,7 @@
     position: relative;
     width: 100%;
     z-index: 1;
+    transition: all 0.5s;
 }
 
 .task-contacts-list-to-assign {
@@ -128,6 +151,7 @@
     padding-bottom: 16px;
     position: relative;
     width: 100%;
+    transition: all 0.5s;
 }
 
 .task-contacts-list-to-assign::-webkit-scrollbar {
@@ -196,20 +220,20 @@
 }
 
 .prio-u {
-    background-image: url(/img/task-prio-u.svg);
+    background-image: url(../img/task-prio-u.svg);
     background-position: 85% 50%;
     ;
     background-repeat: no-repeat;
 }
 
 .prio-m {
-    background-image: url(/img/task-prio-m.svg);
+    background-image: url(../img/task-prio-m.svg);
     background-position: 90% 50%;
     background-repeat: no-repeat;
 }
 
 .prio-l {
-    background-image: url(/img/task-prio-l.svg);
+    background-image: url(../img/task-prio-l.svg);
     background-position: 85% 50%;
     background-repeat: no-repeat;
 }
@@ -292,7 +316,7 @@
     margin: 6px 0;
     padding-right: 5px;
     width: calc(100% - 45px);
-    max-height: 124px;
+    max-height: 88px;
     overflow-y: scroll;
 }
 
@@ -358,11 +382,15 @@
     padding: 16px;
 }
 
+.task-button {
+    cursor: pointer;
+}
+
 .task-bt-clear {
     background-color: white;
     color: #2A3647;
     padding-right: 40px;
-    background-image: url(/img/task_cancel.svg);
+    background-image: url(../img/task_cancel.svg);
     background-position: 85% 50%;
     background-repeat: no-repeat;
     transition: all 0.5s;
@@ -372,7 +400,7 @@
     color: #29ABE2;
     border: 1px solid #29ABE2;
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.3);
-    background-image: url(/img/task_cancel_blue.svg);
+    background-image: url(../img/task_cancel_blue.svg);
     background-size: 24%;
 }
 
@@ -380,7 +408,7 @@
     background-color: #2A3647;
     color: white;
     padding-right: 56px;
-    background-image: url(/img/task_check.svg);
+    background-image: url(../img/task_check.svg);
     background-position: 85% 50%;
     background-repeat: no-repeat;
     transition: all 0.5s;
@@ -399,6 +427,7 @@
     padding: 8px 40px 8px 8px !important;
 }
 
+
 /* Allg. */
 
 .flx {
@@ -415,6 +444,9 @@
     position: relative;
 }
 
+.task-btn-ok {
+    zoom: 1;
+}
 
 /* Media Query */
 
@@ -534,15 +566,14 @@
 
 
 @media (max-width: 580px) {
-
     .task-bt-clear,
     .task-bt-create {
-        zoom: 0.8;
         transition: all 0.5s;
     }
 
     .task-input-con {
         height: calc(100vh - 350px);
+        transition: all 0.5s;
     }
 
     .task-h2 {
@@ -550,28 +581,61 @@
         font-size: 47px;
         line-height: 56.4px;
         transition: all 0.5s;
+        transition: all 0.5s;
     }
 
     .task-label {
         font-size: 16px;
         line-height: 19.2px;
+        transition: all 0.5s;
     }
 
     .task-input-fd {
         font-size: 16px;
         line-height: 19.2px;
+        transition: all 0.5s;
     }
 
     .task-foot-text {
         font-size: 16px;
+        transition: all 0.5s;
     }
 }
 
+
+@media (max-width: 500px) {
+    .task-bt-change {
+        margin-right: 5%;
+        zoom: 1 !important;
+        position: fixed;
+        z-index: 15;
+        bottom: 1px;
+        transition: all 0.5s;
+        bottom: 100px;
+        right: 25px;
+    }
+
+    .task-input-con{
+        height: calc(100vh - 320px);
+    }
+    .task-foot-con{
+        height: 60px;
+        padding-top: 5px;
+        zoom: 0.8;
+        transition: all 0.5s;
+    }
+}
+
+
 @media (max-width: 384px) {
+    .task-foot-con {
+        height: 45px;
+    }
 
     .task-bt-clear,
     .task-bt-create {
-        zoom: 0.5;
+        zoom: 0.8 ;
+        margin-right: 5%;
     }
 
     .task-bt-create {
@@ -580,7 +644,8 @@
     }
 
     .task-input-con {
-        height: calc(100vh - 340px);
+        height: calc(100vh - 320px);
+        padding-bottom: 10px;
     }
 
     .task-prio-bt-con {

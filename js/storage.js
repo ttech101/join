@@ -1,4 +1,4 @@
-const STORAGE_TOKEN = '8A3U4MK7U3QQZFIE9YT3HJC3MLRAQ8J3J7J4DZ5Y';           //The tocken to the server storage
+const STORAGE_TOKEN = 'TOU51R21M1ZJUBNEVP1Q5YFN1UVMEURVYQ27V9AJ';           //The tocken to the server storage
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';    //The URL to the server storage
 let user;                                                                   // Creation of users variable
 let list;                                                                   //Creation of list variable
@@ -65,7 +65,7 @@ async function SaveInLocalStorageAndServer(users, keyString, dataObject) {
 /**
  * This function loads the tasks data
  */
-function loadFromLocalStorage() {            
+function loadFromLocalStorage() {
     let listAsText = localStorage.getItem('list');
     if (listAsText) {
         list = JSON.parse(listAsText);

@@ -329,8 +329,8 @@ function changeBoardDetailCard(id, i) {
 
     let formContainer = document.createElement("form");
     let subButton = document.createElement("input");
-
-    formContainer.innerHTML = createAddTask();
+    let todayDate = getCurrentDate();
+    formContainer.innerHTML = createAddTask(todayDate);
     boardDetailBoxCon.appendChild(formContainer);
     formContainer.appendChild(subButton);
 
@@ -350,8 +350,9 @@ function changeBoardDetailCard(id, i) {
 function changeBoardAttribute(id, i, formContainer, subButton) {
     formContainer.setAttribute('onsubmit', `changeTask(${id}, ${i}); return false`);
     formContainer.setAttribute('id', 'edit-task-form');
-    subButton.setAttribute('type', 'submit');
     subButton.setAttribute('value', 'OK');
+    subButton.setAttribute('type', 'submit');
+
 }
 
 /**
@@ -367,8 +368,9 @@ function changeBoardStyle(subButton, cardStroy, formContainer) {
     subButton.classList.add('task-bt-create');
     subButton.classList.add('task-bt-change');
     cardStroy.classList.remove('board_detail_header');
-    formContainer.style = 'overflow-y:scroll; height:68vh;';
-    document.getElementById('board_detail_card').style = 'padding-bottom: 60px';
+    //formContainer.style = 'overflow-y:scroll; height:60vh; bottom:140px;top:96px ; width:100%';
+    formContainer.classList.add('board_edit_task');
+    document.getElementById('board_detail_card').style = 'padding-bottom: 60px;margin-bottom: 60px';
     document.getElementById('task-input-left').style.width = '100%';
     document.getElementById('task-input-right').style.width = '100%';
     document.getElementById('task-hr').classList.add('d-none');

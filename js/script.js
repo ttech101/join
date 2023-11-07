@@ -51,21 +51,6 @@ function showForgotPassword(mode) {
 }
 
 /**
- * Handles the submit action of the forgot password form and shows a popup upon success.
- */
-function handleForgotPasswordFormSubmit() {
-    let passwordEmail = document.getElementById('passwordEmail');
-    passwordEmail.value = '';
-
-    document.getElementById('forgot-password-container').classList.add('d-none');
-    document.getElementById('password-container').classList.remove('d-none');
-
-    showPopupAndRedirect('Passwort erfolgreich zurückgesetzt', 'index.html');
-
-    return false;
-}
-
-/**
  * Displays a basic alert with the given message.
  * @param {string} message - The message to display in the alert.
  */
@@ -82,10 +67,10 @@ function validatePasswords() {
     const password2 = document.getElementById('ForgotPassword2').value;
     const errorMessage = document.getElementById('register-error2');
     if (password1 !== password2) {
-
         showPopup('Your password does not match.')
         return false;
     } else {
+        showPopup('The password has been changed')
         errorMessage.style.display = 'none';
         return true;
     }
@@ -97,7 +82,7 @@ function validatePasswords() {
 function checkUserEmail() {
     let passwordEmail = document.getElementById('passwordEmail').value;
 
-    let user = users.find(u => u.email === passwordEmail);
+    user = users.find(u => u.email === passwordEmail);
     if (user) {
         // Wenn der Benutzer in der Liste gefunden wurde
         document.getElementById('forgot-password-container').classList.add('d-none');
@@ -111,10 +96,10 @@ function checkUserEmail() {
  * Handles the submit action of the forgot password form.
  * @returns {boolean} Always returns false to prevent form submission.
  */
-function handleForgotPasswordFormSubmit() {
+async function handleForgotPasswordFormSubmit() {
+    await loadUsers();
     checkUserEmail();
-
-    return false;
+    //return false;
 }
 
 /**
@@ -122,7 +107,6 @@ function handleForgotPasswordFormSubmit() {
  */
 function checkUserLogin() {
     if (user == undefined) {
-        console.log('fehler')
         openPage('../index.html');
     }
 }
@@ -219,4 +203,11 @@ function createHeaderName() {
             document.getElementById('header-icon').style.backgroundColor = '#FFA64E';
         }
     }
+}
+
+async function initHelp() {
+    console.log(user)
+    await loadUserData();
+    loadFromLocalStorageContacts()
+    createHeaderName();
 }
