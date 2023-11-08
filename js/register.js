@@ -38,11 +38,11 @@ async function loadUsers() {
         if (Array.isArray(parsedUsers)) {
             users = parsedUsers;
         } else {
-            console.error('Parsed users is not an array:', parsedUsers);
+            //error('Parsed users is not an array:', parsedUsers);
             users = [];
         }
     } catch (e) {
-        //console.error('Loading error:', e);
+        //error('Loading error:', e);
     }
 }
 

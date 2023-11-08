@@ -26,9 +26,10 @@
   <script src="../js/contacts_html.js"></script>
 </head>
 
-<body onload="includeHTML(), initAddTask()">
+<body onload="includeHTML(); initAddTask()">
   <div w3-include-html="../templates/header.html"></div>
   <div w3-include-html="../templates/sidebar.html"></div>
+  <div w3-include-html="../templates/landscape.html"></div>
   <div id="contacts-add-bg" class="contacts-add-bg d-none" onclick="closeNewContacts()"></div>
   <main onclick="closeAssignedToField()" class="task-body">
     <form class="task-form" onsubmit="createNewTask(); return false">

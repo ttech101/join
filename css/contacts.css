@@ -68,7 +68,8 @@
     flex-direction: column;
     gap: 24px;
     margin-top: 24px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .contacts-list::-webkit-scrollbar {
@@ -94,8 +95,9 @@
 }
 
 .contacts-list-sgl-con:hover {
-    background-color: #F6F7F8;
+    background-color: #2A3647;
     cursor: pointer;
+    color: white;
 }
 
 .contacts-color-icon {
@@ -463,6 +465,10 @@
     flex-direction: column;
 }
 
+.contact-highlight {
+    background-color: #2A3647;
+    color: white;
+}
 
 /* Media Query */
 

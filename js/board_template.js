@@ -138,7 +138,7 @@ function createBoradCard(id, story, story_bg, headline, text, date, priority, pr
             <div id="board_card_bt_delete" onclick="deleteTask(${id})" class="board_dfcb"><img  src="../img/delete.svg" alt="">Delete
                 <img style="cursor: default;" src="../img/stroked_vertically.svg" alt="">
             </div>
-            <div id="board_card_bt_edit" onclick="editTask(${id})" class="board_dfcb"><img  src="../img/edit.svg" alt="">Edit</div>
+            <div id="board_card_bt_edit" onclick="editTask(${id});loadCheckedAssist(${id})" class="board_dfcb"><img  src="../img/edit.svg" alt="">Edit</div>
         </div>
     </div>
 </div>

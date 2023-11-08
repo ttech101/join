@@ -309,15 +309,12 @@ function autoSrcoll(position) {
     let distance = 200;
     let window_height = window.innerHeight - distance;
     if (position <= distance && window.scrollY >= 0) {
-        console.log('oben')
         Y = window.scrollY - 50;
-        //console.warn('top', window.scrollY);
         scrollTo(0, Y);
     }
     if (position >= window_height && window.scrollY <= window_height) {
-        console.log('unten')
+
         Y = window.scrollY + 50;
-        // console.warn('buttom', window.scrollY);
         scrollTo(0, Y);
     }
     return scrollY;

@@ -56,7 +56,14 @@ function createSglContactHTML(i, contact) {
                 <h4 class="contact-h4">Email</h4>
                 <a href="mailto:${contact['email']}" class="contact-email" id="email-${i}">${contact['email']}</a>
                 <h4 class="contact-h4">Phone</h4>
-                <div class="contact-phone" id="phone-${i}">${contact['phone']}</div>
+                <div class="contact-phone" id="phone-${i}">
+                
+                <a href="tel:${contact['phone']}">${contact['phone']}</a>
+              
+            
+            
+            
+            </div>
             </div>
         </div>
     `
@@ -82,7 +89,7 @@ function createPopupContact() {
                     <div id="popuo-contact-user-icon">
                         <img src="../img/contacts-user-logo.svg" alt="" class="contacts-user-logo"/>
                     </div>
-                    <form onsubmit="createNewContact(); return false;" class="contacts-form">
+                    <form onsubmit="createNewContact(); return false;" class="contacts-form" id='check-formvalidation-contacts'>
                         <div class="contacts-input-con">
                             <input required type="text" name="name" id="popup-contact-name" placeholder="Name" class="contacts-input"/>
                             <img src="../img/person.svg" alt="" />
@@ -92,7 +99,7 @@ function createPopupContact() {
                             <img src="../img/mail.svg" alt="" />
                         </div>
                         <div class="contacts-input-con">
-                            <input type="tel" name="phone" id="popup-contact-phone" placeholder="Phone" class="contacts-input"/>
+                            <input type='tel' pattern="[0-9]{0,15}" class="contacts-input" id="popup-contact-phone" placeholder="Phone" title='Phone Number (Format: 0-9)'>
                             <img src="../img/add_call.svg" alt="" />
                         </div>
                         <div id="popup-contact-button-con" class="contacts-button-con">

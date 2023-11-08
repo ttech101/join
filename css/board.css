@@ -303,6 +303,7 @@ h1 {
 
 .board_task_name_box {
     margin-left: 10px;
+    max-width: 170px;
 }
 
 .board_task_name {
@@ -550,7 +551,8 @@ h1 {
     height: 60vh;
     bottom: 140px;
     top: 96px;
-    width: 100%
+    width: 100%;
+    overflow-x: hidden;
 }
 
 @media (max-width: 1000px) {

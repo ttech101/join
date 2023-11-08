@@ -19,9 +19,8 @@ function createAddTask(todayDate) {
               </label>
               <label class="task-label">Assigned to
                 <div class="task-assigned-to-con">
-                  <input type="button" value="Select contacts to assign" 
-                  onclick="stopClosing(event), showAssignedToBt()" 
-                  class="task-sub-input-con task-assigned-to"/>
+                  <input id='serchAssitUserValue' type="text" onkeyup='serchAssitUser()' onclick="stopClosing(event), showAssignedToBt()" 
+                  class="task-sub-input-con task-assigned-to" placeholder="Select contacts to assign"/>
                   <div class="task-assigned-to-sub">
                     <div onclick="stopClosing(event)" id="task-contacts-list-to-assign" 
                     class="d-none task-contacts-list-to-assign"></div>
@@ -32,6 +31,7 @@ function createAddTask(todayDate) {
                     </button>
                   </div>
                 </div>
+                <div id='add-task-assist' class='add-task-assist'></div>
               </label>
             </div>
             <div id="task-hr" class="task-hr"></div>
@@ -95,14 +95,16 @@ function createAddTask(todayDate) {
  * @param {array} subtask contact
  * @returns return contact
  */
-function createAssignedToBt(i, contact) {
+function createAssignedToBt(i, contact, checked) {
   return /*html*/`
             <div class="task-contacts-list-to-assign-sub">
                 <div class="flex-just-btw-ct">
                     <div style="background-color:${contact['hex_color']};" class="task-contacts-color-icon">${contact['logogram']}</div>
                     <label for="contact-${i}">${contact['name']}</label>
                 </div>
-                <input type="checkbox" name="contact" id="contact-${i}" value="${contact['name']}">
+                <div id='contact-assit-update-${i}'>
+                <input onclick='checkedAssist(${i})' type="checkbox" name="contact" id="contact-${i}" value="${contact['name']}" ${checked}>
+                </div>
             </div>`;
 }
 

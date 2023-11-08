@@ -36,6 +36,13 @@ form::-webkit-scrollbar-thumb {
     display: none !important;
 }
 
+.landscape-stop{
+    position: relative;
+    height: 100vh;
+width: 100%;
+z-index: 100;
+}
+
 /* Login */
 .begin {
     height: 98vh;
@@ -109,10 +116,15 @@ form::-webkit-scrollbar-thumb {
 }
 
 .header-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 12px;
     border-radius: 100%;
     color: white;
     border: 2px solid black;
+    height: 30px;
+    width: 30px;
 }
 
 .password-img {
@@ -669,5 +681,26 @@ form::-webkit-scrollbar-thumb {
 
     .name-img {
         background-position: calc(100% - 5px) 8px !important;
+    }
+}
+
+@media (min-height: 600px) {
+    .landscape-stop{
+        display: none;
+    }
+}
+
+@media (max-height: 600px) {
+    .landscape-stop{
+        position: fixed;
+        overflow: hidden;
+        background-color: #6C757D;
+        z-index: 99 !important;
+        height: 100%;
+        width: 100%;
+        border-color: #2A3647;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

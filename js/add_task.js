@@ -30,7 +30,7 @@ async function defineNewTask() {
     resetTaskForm();
     removeStringFromLocalStorage();
     showPopup('Task added to board');
-    openHTML('/html/board.html');
+    openHTML('../html/board.html');
 }
 
 /**
@@ -86,20 +86,17 @@ function resetTaskForm() {
  */
 function getAssignedToUsers() {
     let assignedTo = [];
-
     document.querySelectorAll('[type="checkbox"]').forEach(item => {
         if (item.checked === true) {
-            let divSib = item.previousElementSibling;
-            let divIcon = divSib.firstElementChild;
-
+            let idAssist = item.id.substring(8, 9);
             assignedTo.push({
-                'full_name': item.value,
-                'color': divIcon.style.backgroundColor,
-                'name': divIcon.innerHTML,
+                'full_name': contacts[idAssist].name,
+                'color': contacts[idAssist].hex_color,
+                'name': contacts[idAssist].logogram,
+                'mail': contacts[idAssist].email
             });
         }
     });
-
     return assignedTo;
 }
 

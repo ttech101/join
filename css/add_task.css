@@ -55,6 +55,7 @@
     justify-content: space-between;
     width: 440px;
     transition: all 0.5s;
+    padding-bottom: 20px;
 }
 
 
@@ -82,6 +83,7 @@
     line-height: 24px;
     padding: 12px 16px;
     transition: all 0.5s;
+    appearance: none;
 }
 
 .task-input-fd::placeholder {
@@ -130,25 +132,29 @@
 
 .task-assigned-to {
     background-image: url(../img/arrow_drop_dow.svg);
-    background-position: 95% 50%;
+    background-position: 100% 50%;
     background-repeat: no-repeat;
-    color: #D1D1D1;
+    color: black;
     font-size: 20px;
     line-height: 24px;
     padding: 12px 0 12px 16px !important;
     position: relative;
-    width: 100%;
+    width: calc(100% - 16px);
     z-index: 1;
     transition: all 0.5s;
 }
 
+.task-assigned-to::placeholder {
+    color: #d1d1d1;
+    font-family: 'Inter', sans-serif;
+}
+
 .task-contacts-list-to-assign {
     background-color: white;
-    margin-bottom: -10px;
-    margin-top: -10px;
+    margin-bottom: 0px;
     max-height: 128px;
     overflow-y: scroll;
-    padding-bottom: 16px;
+    padding-bottom: 10px;
     position: relative;
     width: 100%;
     transition: all 0.5s;
@@ -188,6 +194,29 @@
     justify-content: center;
     align-items: center;
 }
+
+.add-task-assist {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.task-contacts-color-icon-assist {
+    height: 40px;
+    width: 40px;
+    background-color: #FF8190;
+    border-radius: 50px;
+    margin-right: 12px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-contacts-color-icon-assist:hover {
+    cursor: pointer;
+}
+
 
 .task-bt-add {
     font-size: 21px;
@@ -448,6 +477,10 @@
     zoom: 1;
 }
 
+.dn {
+    display: none;
+}
+
 /* Media Query */
 
 @media (min-width: 1265px) {
@@ -500,7 +533,7 @@
 
     .task-input-left {
         width: 100%;
-        margin-bottom: 48px;
+        margin-bottom: 15px;
     }
 
     .task-input-right {
@@ -566,6 +599,7 @@
 
 
 @media (max-width: 580px) {
+
     .task-bt-clear,
     .task-bt-create {
         transition: all 0.5s;
@@ -615,10 +649,11 @@
         right: 25px;
     }
 
-    .task-input-con{
+    .task-input-con {
         height: calc(100vh - 320px);
     }
-    .task-foot-con{
+
+    .task-foot-con {
         height: 60px;
         padding-top: 5px;
         zoom: 0.8;
@@ -634,7 +669,7 @@
 
     .task-bt-clear,
     .task-bt-create {
-        zoom: 0.8 ;
+        zoom: 0.8;
         margin-right: 5%;
     }
 

@@ -26,27 +26,91 @@ function loadAddTaskForm() {
 function showAssignedToBt() {
     document.getElementById('task-contacts-list-to-assign').classList.remove('d-none');
     document.getElementById('add-new-contact-bt').classList.remove('d-none');
-    let contactsListToAssignCon = document.getElementById('task-contacts-list-to-assign');
-
-    if(!contacts) {
+    contactsListToAssignCon = document.getElementById('task-contacts-list-to-assign');
+    if (!contacts) {
         contactsListToAssignCon.innerHTML = "";
         contactsListToAssignCon.innerHTML = /*html*/`<p>&emsp; No contacts yet</p>`;
     } else {
-    sortContactsList();
-    renderAssignedToBt();
+        sortContactsList();
+        renderAssignedToBt();
     }
 }
 
 /**
  * This function generates the html code for the assigned to Button with all the saved contacts.
+ * 
+ * @param {string} serch serch assit user 
  */
-function renderAssignedToBt() {
+function renderAssignedToBt(serch) {
     let contactsListToAssignCon = document.getElementById('task-contacts-list-to-assign');
     contactsListToAssignCon.innerHTML = "";
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-        
-        contactsListToAssignCon.innerHTML += createAssignedToBt(i, contact);
+        if (contact.name.toLowerCase().includes(serch) || serch == undefined) {
+            if (contact.check) {
+                contactsListToAssignCon.innerHTML += createAssignedToBt(i, contact, 'checked');
+            } else {
+                contactsListToAssignCon.innerHTML += createAssignedToBt(i, contact, '');
+            }
+        }
+    }
+}
+
+/**
+ * This function looks for the assit users
+ */
+function serchAssitUser() {
+    let serchValue = document.getElementById('serchAssitUserValue').value;
+    serchValue = serchValue.toLowerCase();
+    renderAssignedToBt(serchValue);
+}
+
+/**
+ * This function determines the checked of the individual Assist users
+ * 
+ * @param {number} i index of assist user
+ */
+function checkedAssist(i) {
+    for (let j = 0; j < contacts.length; j++) {
+        const element = contacts[j];
+        if (i == j) {
+            if (document.getElementById(`contact-${i}`).checked && document.getElementById(`task-assist-${element.email}`) == null) {
+                element.check = 'checked';
+                document.getElementById('add-task-assist').innerHTML += `
+                    <div id='task-assist-${element.email}' style="background-color:${element['hex_color']};" class="task-contacts-color-icon-assist">${element['logogram']}</div>`
+            } else if (document.getElementById(`contact-${i}`).checked && document.getElementById(`task-assist-${element.email}`) != null) {
+                document.getElementById(`task-assist-${element.email}`).classList.remove('dn');
+                element.check = 'checked';
+            } else
+                if (document.getElementById('add-task-assist')) {
+                    element.check = '';
+                    document.getElementById(`task-assist-${element.email}`).classList.add('dn');
+                }
+        }
+    }
+    renderAssignedToBt();
+}
+
+/**
+ * This function checks the assit users that have already been set
+ * 
+ * @param {number} i index ob task 
+ */
+function loadCheckedAssist(i) {
+    document.getElementById('add-task-assist').innerHTML = '';
+    for (let h = 0; h < list[i]['task_user'].length; h++) {
+        const element = list[i]['task_user'][h];
+        for (let k = 0; k < contacts.length; k++) {
+            const contact = contacts[k];
+            console.warn(k,element.mail , contact.email )
+            if (element.mail == contact.email) {
+                console.log(k)
+                document.getElementById('add-task-assist').innerHTML += `
+                    <div id='task-assist-${contact.email}' style="background-color:${element['color']};" class="task-contacts-color-icon-assist">${element['name']}
+                    </div>`
+                contact.check = 'checked';
+            }
+        }
     }
 }
 
@@ -55,11 +119,10 @@ function renderAssignedToBt() {
  */
 function closeAssignedToField() {
     let listOfContactsToAssigne = document.getElementById('task-contacts-list-to-assign');
-    if(listOfContactsToAssigne) {
-    listOfContactsToAssigne.classList.add('d-none');
-    document.getElementById('add-new-contact-bt').classList.add('d-none');
-
-    // showAssignedToIcons();
+    if (listOfContactsToAssigne) {
+        listOfContactsToAssigne.classList.add('d-none');
+        document.getElementById('add-new-contact-bt').classList.add('d-none');
+        document.getElementById('serchAssitUserValue').value = '';
     }
 }
 
@@ -69,6 +132,7 @@ function closeAssignedToField() {
  * @param {*} event 
  */
 function stopClosing(event) {
+
     event.stopPropagation();
 }
 
@@ -93,7 +157,7 @@ function deleteInputText() {
  * This function saves the input value as an object in newSubtask and than within the array subtasks.
  */
 function saveInputText() {
-    let subtaskInput = document.getElementById('task-sub-input-text'); 
+    let subtaskInput = document.getElementById('task-sub-input-text');
 
     let newSubtask = {
         'text': subtaskInput.value,
@@ -124,7 +188,7 @@ function renderInputText() {
  * @param {number} i This is the index of the subtask
  */
 function deleteSubtask(i) {
-    subtasks.splice(i,1);
+    subtasks.splice(i, 1);
     renderInputText();
 }
 
@@ -165,4 +229,4 @@ function getCurrentDate() {
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
-  }
+}

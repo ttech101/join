@@ -1,3 +1,5 @@
+
+
 /**
  * Toggles the visibility of elements based on their IDs and checks/unchecks the privacy policy checkbox.
  * @param {string} elementId - The ID of the primary element to toggle.
@@ -206,7 +208,6 @@ function createHeaderName() {
  * Load of info page the user
  */
 async function initHelp() {
-    console.log(user)
     await loadUserData();
     loadFromLocalStorageContacts()
     createHeaderName();
