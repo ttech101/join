@@ -15,6 +15,7 @@ let hexColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1
  */
 async function initContacts() {
     await loadUserData();
+    checkUserLogin();
     loadFromLocalStorage();
     loadFromLocalStorageContacts();
     renderContacts();

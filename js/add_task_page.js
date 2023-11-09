@@ -4,6 +4,7 @@
 async function initAddTask() {
     loadAddTaskForm();
     await loadUserData();
+    checkUserLogin();
     loadFromLocalStorage();
     loadFromLocalStorageContacts();
     loadStringFromLocalStorage();
@@ -77,7 +78,7 @@ function checkedAssist(i) {
             if (document.getElementById(`contact-${i}`).checked && document.getElementById(`task-assist-${element.email}`) == null) {
                 element.check = 'checked';
                 document.getElementById('add-task-assist').innerHTML += `
-                    <div id='task-assist-${element.email}' style="background-color:${element['hex_color']};" class="task-contacts-color-icon-assist">${element['logogram']}</div>`
+                    <div id='task-assist-${element.email}' style="background-color:${element['hex_color']};" class="task-contacts-color-icon-assist">${element['logogram']} </div>`
             } else if (document.getElementById(`contact-${i}`).checked && document.getElementById(`task-assist-${element.email}`) != null) {
                 document.getElementById(`task-assist-${element.email}`).classList.remove('dn');
                 element.check = 'checked';
@@ -97,18 +98,18 @@ function checkedAssist(i) {
  * @param {number} i index ob task 
  */
 function loadCheckedAssist(i) {
+    if(user == 'guest') return
     document.getElementById('add-task-assist').innerHTML = '';
+    let counterAssistUser = 0;
     for (let h = 0; h < list[i]['task_user'].length; h++) {
         const element = list[i]['task_user'][h];
         for (let k = 0; k < contacts.length; k++) {
             const contact = contacts[k];
-            console.warn(k,element.mail , contact.email )
             if (element.mail == contact.email) {
-                console.log(k)
-                document.getElementById('add-task-assist').innerHTML += `
+                    document.getElementById('add-task-assist').innerHTML += `
                     <div id='task-assist-${contact.email}' style="background-color:${element['color']};" class="task-contacts-color-icon-assist">${element['name']}
                     </div>`
-                contact.check = 'checked';
+                    contact.check = 'checked';
             }
         }
     }

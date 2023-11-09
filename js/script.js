@@ -103,6 +103,9 @@ function checkUserLogin() {
     if (user == undefined) {
         openPage('../index.html');
     }
+    if(user == 'guest'){
+        document.getElementById('guest-login').innerHTML = 'Attention guest user, saving and deleting not allowed.';  
+    }
 }
 
 /**
@@ -124,6 +127,8 @@ function setGuestUser() {
     user = JSON.stringify('guest');
     localStorage.setItem('user', user);
 }
+
+
 
 
 /**

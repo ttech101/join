@@ -161,7 +161,7 @@
 }
 
 .task-contacts-list-to-assign::-webkit-scrollbar {
-    width: 12px;
+    width: 16px;
 }
 
 .task-contacts-list-to-assign::-webkit-scrollbar-track {
@@ -173,6 +173,8 @@
     border-radius: 10px;
     border: 3px solid #ffffff;
 }
+
+
 
 .task-contacts-list-to-assign-sub {
     display: flex;
@@ -196,10 +198,28 @@
 }
 
 .add-task-assist {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    display: -webkit-box;
+    max-width: 100%;
+    overflow-x: scroll;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
+
+
+.add-task-assist::-webkit-scrollbar {
+    height: 16px;
+}
+
+.add-task-assist::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.add-task-assist::-webkit-scrollbar-thumb {
+    background-color: #6C757D;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+}
+
 
 .task-contacts-color-icon-assist {
     height: 40px;
@@ -348,6 +368,22 @@
     max-height: 88px;
     overflow-y: scroll;
 }
+
+
+.task-sub-text::-webkit-scrollbar {
+    width: 16px;
+}
+
+.task-sub-text::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.task-sub-text::-webkit-scrollbar-thumb {
+    background-color: #6C757D;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+}
+
 
 .task-sub-text-sgl {
     padding: 5px 0;
@@ -541,7 +577,7 @@
     }
 
     .task-sub-text {
-        overflow-y: unset;
+        overflow-y: auto;
     }
 
     .task-foot-con {

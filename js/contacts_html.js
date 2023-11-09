@@ -57,12 +57,7 @@ function createSglContactHTML(i, contact) {
                 <a href="mailto:${contact['email']}" class="contact-email" id="email-${i}">${contact['email']}</a>
                 <h4 class="contact-h4">Phone</h4>
                 <div class="contact-phone" id="phone-${i}">
-                
                 <a href="tel:${contact['phone']}">${contact['phone']}</a>
-              
-            
-            
-            
             </div>
             </div>
         </div>

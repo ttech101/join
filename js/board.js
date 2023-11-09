@@ -34,7 +34,7 @@ function filterTaskBoard(task_board) {
             const element = filter[i];
             let priority_img = '../img/task-prio-' + element.priority.charAt(0).toLowerCase() + '.svg';
             document.getElementById('board_' + task_board).innerHTML +=
-            createBoardTasks(element.id, element.category, element.headline, element.text, priority_img);
+                createBoardTasks(element.id, element.category, element.headline, element.text, priority_img);
             loadBoardUsers(element.id, element.task_user);
             loadBoardSubtasks(element.id, element.subtasks);
         }
@@ -69,8 +69,14 @@ function loadBoardUsers(id, task_user) {
     for (let i = 0; i < task_user.length; i++) {
         const element = task_user[i];
         let task_user_number = `task_user${id}`;
-        document.getElementById(task_user_number).innerHTML += createBoardUsers(element.color, element.name);
-    };
+        if (i < 3) {
+            document.getElementById(task_user_number).innerHTML += createBoardUsers(element.color, element.name);
+        } else if (task_user.length-1 == i) {
+            counter = task_user.length - 3;
+            namecounter = '+' + counter;
+            document.getElementById(task_user_number).innerHTML += createBoardUsers('#2A3647', namecounter)
+        }
+    }
 }
 
 /**
@@ -122,7 +128,6 @@ function allowDrop(event) {
 function moveTo(category) {
     list[draggedElement]['task_board'] = category;
     SaveInLocalStorageAndServer(user, 'list', list);
-    //initBoard();
     loadTaskBoard();
 }
 
